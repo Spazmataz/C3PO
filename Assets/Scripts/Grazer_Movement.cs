@@ -14,16 +14,12 @@ public class Grazer_Movement : MonoBehaviour {
 	private float moveCounter = 0f;
 	private float turnRate = 2.5f;
 	private Vector2 targetPos;
-	private float screenWidth = Screen.width;
-	private float screenHeight = Screen.height;
 	private float x;
 	private float y;
 
 
 		void Start()
 		{
-//		targetPos.x = Random.Range(-10,10);
-//		targetPos.y = Random.Range(-5,5);
 		x = Random.Range (0.0f, 1.0f);
 		y = Random.Range (0.0f, 1.0f);
 		targetPos = Camera.main.ViewportToWorldPoint(new Vector2(x,y));
@@ -68,11 +64,11 @@ public class Grazer_Movement : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D otherCollider)
 	{
 
-			currentFood = otherCollider;
-			targetPos = otherCollider.transform.position;
-			circle.radius = 0.115f;    //ATTENTION!!
-			movement = new Vector2(0, 0);
-
+						currentFood = otherCollider;
+						targetPos = otherCollider.transform.position;
+						circle.radius = 0.115f;    //ATTENTION!!
+						movement = new Vector2 (0, 0);
+				
 	}
 
 

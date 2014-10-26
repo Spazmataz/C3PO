@@ -3,24 +3,34 @@ using System.Collections;
 
 public class FoodEnergyValue : MonoBehaviour {
 	
-		/// <summary>
-		/// Total hitpoints
-		/// </summary>
-		public int energy = 1;
-		public int maxEnergy = 5;
-
-		/// <summary>
-		/// Enemy or player?
-		/// </summary>
 		
+	public int energy = 1;
+	public int maxEnergy = 5;
+	public bool isFood = true;
+	public float energyCounter = 0.0f;
+	public float energyCreateTimer = 5.0f;
+	public Rigidbody2D seedPrefab;
+	private Vector2 seedPos;
 
-		public bool isFood = true;
+	void Update(){
 
+		energyCounter += Time.deltaTime;
+		if (energyCounter >= energyCreateTimer){
+			energyCounter = 0;
+			Aqquire(1);
+
+		}
+
+		if (energy >= maxEnergy) {	     // Create seed
+
+
+//			seedPos.x = (transform.position.x) + Random.Range(-1,1);
+//			seedPos.y = (transform.position.y) + Random.Range(-1,1);			//this is shitty, try use radius
+//			Instantiate(seedPrefab, seedPos, Quaternion.Euler(0,0,0));
+//			Expend(2);
+				}
+		}
 		
-		/// <summary>
-		/// Inflicts damage and check if the object should be destroyed
-		/// </summary>
-		/// <param name="damageCount"></param>
 		public void Aqquire(int aqquisitionCount)
 		{
 			energy += aqquisitionCount;
@@ -38,7 +48,7 @@ public class FoodEnergyValue : MonoBehaviour {
 			if (energy <= 0)
 			{
 				// DEAD
-			//transform.position = transform.position + new Vector3(1f, 1f, 0f);
+
 				Destroy(gameObject);
 
 
